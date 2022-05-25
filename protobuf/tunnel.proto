@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option go_package = "router/protobuf";
+
+package pb;
+
+service Control {
+    rpc Controlling(stream CtrlMessage) returns(stream CtrlMessage){}
+}
+
+message CtrlMessage{
+    string device_id = 1;
+    uint32 action = 2;
+    bytes data = 3;
+}
+
+service Forward {
+    rpc Forwarding(stream ForwardMessage) returns(stream ForwardMessage){}
+}
+
+message ForwardMessage {
+    string device_id = 1; // 设备ID
+    string tunnel_id = 2; // 隧道ID
+    string trace_id = 3;  // 链路ID
+    string property = 4;  //
+    bytes data = 5; // 数据
+}
