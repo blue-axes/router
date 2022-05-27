@@ -24,8 +24,9 @@ func NewServer(cfg Config) *Server {
 		httpSvr: e,
 	}
 
-	e.Use(middleware.Logger())
+	e.Pre(Pre)
 
+	e.Use(middleware.Logger())
 	InitRoute(e)
 
 	return s

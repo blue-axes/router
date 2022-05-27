@@ -15,6 +15,14 @@ type (
 	}
 )
 
+func (e Error) Code() errno.Errno {
+	return e.code
+}
+
+func (e Error) Message() string {
+	return e.message
+}
+
 func (e *Error) Error() string {
 	return fmt.Sprintf("code:%d message:%s", e.code, e.message)
 }
